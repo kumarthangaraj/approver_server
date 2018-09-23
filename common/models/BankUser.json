@@ -1,0 +1,65 @@
+{
+  "name": "BankUser",
+  "base": "BaseUser",
+  "plural": "BankUsers",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "clientId": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "clientKey": {
+      "type": "string",
+      "required": true
+    },
+    "bankUserId": {
+      "type": "string",
+      "required": true
+    },
+    "bankId": {
+      "type": "string",
+      "required": true
+    },
+    "solId": {
+      "type": "string",
+      "required": true
+    },
+	"username": {
+      "type": "string",
+      "required": true
+    },
+    "empId": {
+      "type": "string",
+      "required": true
+    },
+    "mobileNumber": {
+      "type": "string",
+      "required": true
+    },
+    "userDtls": {
+      "type": "object",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"create"
+    },
+	{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"updateAttributes"
+    }],
+  "methods": {}
+}

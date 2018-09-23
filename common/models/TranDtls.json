@@ -1,0 +1,56 @@
+{
+    "name": "TranDtls",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true
+    },
+    "properties": {
+      "tran_id": {
+        "type": "string",
+        "required": true
+      },
+      "tran_date": {
+        "type": "date",
+        "required": true
+      },
+      "from_acct": {
+        "type": "string",
+        "required": true
+      },
+      "to_acct": {
+        "type": "string",
+        "required": true
+      },
+      "currency": {
+        "type": "string",
+        "required": true
+      },
+      "amount": {
+        "type": "number",
+        "required": true
+      },
+      "tran_particulars": {
+        "type": "string",
+        "required": true
+      },
+      "approver1": {
+        "type": "string",
+        "required": true
+      },
+      "approver2": {
+        "type": "string",
+        "required": false
+      },
+      "approval_status" : {
+        "type": "string",
+        "required": false,
+        "default": "N"
+      }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+  }
+  

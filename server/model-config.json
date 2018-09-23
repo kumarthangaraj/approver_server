@@ -1,0 +1,25 @@
+{
+    "_meta": {
+        "sources": [
+            "loopback/common/models",
+            "loopback/server/models",
+            "../common/models"
+        ],
+        "mixins": [
+            "loopback/common/mixins",
+            "loopback/server/mixins"
+        ]
+    },
+    "devicedtls": {
+        "dataSource":"db",
+        "public": true
+    },
+    "BankUser": {
+        "dataSource":"db",
+        "public": true
+    },
+    "TranDtls": {
+        "dataSource":"db",
+        "public": true
+    }
+}

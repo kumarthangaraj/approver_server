@@ -1,0 +1,382 @@
+<!--
+  ©2016-2017 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
+  Bangalore, India. All Rights Reserved.
+-->
+<!doctype html>
+<html>
+<head>
+  <title>oe-stepper tests</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../../iron-test-helpers/test-helpers.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+
+  <link rel="import" href="../oe-stepper.html">
+</head>
+
+<body>
+  <test-fixture id="firstselected">
+    <template>
+      <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Asset Details","isDisabled":false,"hasError":false,"isCompleted":false}]' value='0'></oe-stepper>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="secondselected">
+    <template>
+      <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Asset Details","isDisabled":false,"hasError":false,"isCompleted":false}]' value='1'></oe-stepper>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="thirdselected">
+    <template>
+      <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Asset Details","isDisabled":false,"hasError":false,"isCompleted":false}]' value='2'></oe-stepper>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="nostep">
+    <template>
+      <oe-stepper steps='[]' value='0'></oe-stepper>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="iconstep">
+    <template>
+      <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":false,"isCompleted":true,"icon":"icons:build"},
+        {"label":"Demographic Details","isDisabled":false,"hasError":true,"isCompleted":false,"icon":"icons:supervisor-account"},
+        {"label":"Asset Details","isDisabled":false,"hasError":false,"isCompleted":false,"icon":"icons:alarm"}]' value='1'></oe-stepper>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="verticalstep">
+    <template>
+      <div style="height: 300px;">
+        <oe-stepper vertical steps='[{"label":"Financial Details","isDisabled":false,"hasError":false,"isCompleted":true,"icon":"icons:build"},
+        {"label":"Demographic Details","isDisabled":false,"hasError":true,"isCompleted":false,"icon":"icons:supervisor-account"},
+        {"label":"Asset Details","isDisabled":false,"hasError":false,"isCompleted":false,"icon":"icons:alarm"}]' value='1'></oe-stepper>
+      </div>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('basic', function () {
+
+      test('validating if no step is selected', function () {
+        var el = fixture('nostep');
+        assert.isTrue(el.value == 0, 'No step is selected');
+      });
+
+      test('validating if no step index is returned for stepper with 0 steps', function () {
+        var el = fixture('nostep');
+        assert.isFalse(el.value == 1, 'No step index returned');
+      });
+
+      test('validating if no step label is returned for stepper with 0 steps', function () {
+        var el = fixture('nostep');
+        assert.isTrue(el.selectedLabel == "", 'No step label returned');
+      });
+
+      test('validating if first step is selected', function () {
+        var el = fixture('firstselected');
+        assert.isTrue(el.value == 0, 'first step is selected');
+      });
+
+      test('validating if second step is not selected', function () {
+        var el = fixture('firstselected');
+        assert.isFalse(el.value == 1, 'second step is not selected');
+      });
+
+      test('validating if third step is not selected', function () {
+        var el = fixture('firstselected');
+        assert.isFalse(el.value == 2, 'third step is not selected');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('firstselected');
+        assert.isTrue(el.value == 0, 'value returns correct value');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('firstselected');
+        assert.isFalse(el.value == 1, 'value returns correct value');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('firstselected');
+        assert.isFalse(el.value == 2, 'value returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('firstselected');
+        assert.isTrue(el.selectedLabel == "Financial Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('firstselected');
+        assert.isFalse(el.selectedLabel == "Demographic Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('firstselected');
+        assert.isFalse(el.selectedLabel == "Asset Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if first step is not selected', function () {
+        var el = fixture('secondselected');
+        assert.isFalse(el.value == 0, 'first step is not selected');
+      });
+
+      test('validating if second step is selected', function () {
+        var el = fixture('secondselected');
+        assert.isTrue(el.value == 1, 'second step is selected');
+      });
+
+      test('validating if third step is not selected', function () {
+        var el = fixture('secondselected');
+        assert.isFalse(el.value == 2, 'third step is not selected');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('secondselected');
+        assert.isFalse(el.value == 0, 'value returns correct value');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('secondselected');
+        assert.isTrue(el.value == 1, 'value returns correct value');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('secondselected');
+        assert.isFalse(el.value == 2, 'value returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('secondselected');
+        assert.isFalse(el.selectedLabel == "Financial Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('secondselected');
+        assert.isTrue(el.selectedLabel == "Demographic Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('secondselected');
+        assert.isFalse(el.selectedLabel == "Asset Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if first step is not selected', function () {
+        var el = fixture('thirdselected');
+        assert.isFalse(el.value == 0, 'first step is not selected');
+      });
+
+      test('validating if second step is not selected', function () {
+        var el = fixture('thirdselected');
+        assert.isFalse(el.value == 1, 'second step is not selected');
+      });
+
+      test('validating if third step is selected', function () {
+        var el = fixture('thirdselected');
+        assert.isTrue(el.value == 2, 'third step is selected');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('thirdselected');
+        assert.isFalse(el.value == 0, 'value returns correct value');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('thirdselected');
+        assert.isFalse(el.value == 1, 'value returns correct value');
+      });
+
+      test('validating if value property returns value correctly', function () {
+        var el = fixture('thirdselected');
+        assert.isTrue(el.value == 2, 'value returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('thirdselected');
+        assert.isFalse(el.selectedLabel == "Financial Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('thirdselected');
+        assert.isFalse(el.selectedLabel == "Demographic Details", 'selectedLabel returns correct value');
+      });
+
+      test('validating if selectedLabel property returns value correctly', function () {
+        var el = fixture('thirdselected');
+        assert.isTrue(el.selectedLabel == "Asset Details", 'selectedLabel returns correct value');
+      });
+
+      test('testing tap event: verifying if selected label and step index is returned is that of the second step', function (done) {
+        var el = fixture('firstselected');
+        assert.isTrue(el.value == 0, 'first step is selected');
+        el.addEventListener('oe-stepper-tap', function (event) {
+          assert.isTrue((el.value == 1), 'click on second step is changing the current selected step')
+          assert.isTrue((event.detail.selectedIndex == 1), 'On tap gives the current selected step index');
+          assert.isTrue((event.detail.selectedLabel == "Demographic Details"), 'On tap gives the current selected step label');
+          done();
+        });
+        flush(function () {
+          var steps = el.querySelectorAll(".stepsection");
+          var secondStep = steps[1].children[0];
+          MockInteractions.tap(secondStep);
+        });
+      });
+
+      test('testing tap event: verifying if selected label and step index is returned is that of the third step', function (done) {
+        var el = fixture('firstselected');
+        assert.isTrue(el.value == 0, 'first step is selected');
+        el.addEventListener('oe-stepper-tap', function (event) {
+          assert.isTrue((el.value == 2), 'click on third step is changing the current selected step')
+          assert.isTrue((event.detail.selectedIndex == 2), 'On tap gives the current selected step index');
+          assert.isTrue((event.detail.selectedLabel == "Asset Details"), 'On tap gives the current selected step label');
+          done();
+        });
+        flush(function () {
+          var steps = el.querySelectorAll(".stepsection");
+          var thirdStep = steps[2].children[0];
+          MockInteractions.tap(thirdStep);
+        });
+      });
+
+      test('testing tap event: verifying if selected label and step index is returned is that of the first step', function (done) {
+        var el = fixture('secondselected');
+        assert.isTrue(el.value == 1, 'second step is selected');
+        el.addEventListener('oe-stepper-tap', function (event) {
+          assert.isTrue((el.value == 0), 'click on first step is changing the current selected step')
+          assert.isTrue((event.detail.selectedIndex == 0), 'On tap gives the currentselected step index');
+          assert.isTrue((event.detail.selectedLabel == "Financial Details"), 'On tap gives the current selected step label');
+          done();
+        });
+        flush(function () {
+          var steps = el.querySelectorAll(".stepsection");
+          var firstStep = steps[0].children[0];
+          MockInteractions.tap(firstStep);
+        });
+      });
+
+      test('testing tap event: verifying if selected label and step index is returned is that of the first step', function (done) {
+        var el = fixture('secondselected');
+        assert.isTrue(el.value == 1, 'second step is selected');
+        el.addEventListener('oe-stepper-tap', function (event) {
+          assert.isTrue((el.value == 2), 'click on third step is changing the current selected step')
+          assert.isTrue((event.detail.selectedIndex == 2), 'On tap gives the currentselected step index');
+          assert.isTrue((event.detail.selectedLabel == "Asset Details"), 'On tap gives the current selected step label');
+          done();
+        });
+        flush(function () {
+          var steps = el.querySelectorAll(".stepsection");
+          var thirdStep = steps[2].children[0];
+          MockInteractions.tap(thirdStep);
+        });
+      });
+
+      test('testing tap event: verifying if selected label and step index is returned is that of the second step', function (done) {
+        var el = fixture('thirdselected');
+        assert.isTrue(el.value == 2, 'third step is selected');
+        el.addEventListener('oe-stepper-tap', function (event) {
+          assert.isTrue((el.value == 0), 'click on first step is changing the current selected step')
+          assert.isTrue((event.detail.selectedIndex == 0), 'On tap gives the current selected step index');
+          assert.isTrue((event.detail.selectedLabel == "Financial Details"), 'On tap gives the current selected step label');
+          done();
+        });
+        flush(function () {
+          var steps = el.querySelectorAll(".stepsection");
+          var firstStep = steps[0].children[0];
+          MockInteractions.tap(firstStep);
+        });
+      });
+
+      test('testing tap event: verifying if selected label and step index is returned is that of the second step', function (done) {
+        var el = fixture('thirdselected');
+        assert.isTrue(el.value == 2, 'third step is selected');
+        el.addEventListener('oe-stepper-tap', function (event) {
+          assert.isTrue((el.value == 1), 'click on second step is changing the current selected step')
+          assert.isTrue((event.detail.selectedIndex == 1), 'On tap gives the current selected step index');
+          assert.isTrue((event.detail.selectedLabel == "Demographic Details"), 'On tap gives the current selected step label');
+          done();
+        });
+        flush(function () {
+          var steps = el.querySelectorAll(".stepsection");
+          var secondStep = steps[1].children[0];
+          MockInteractions.tap(secondStep);
+        });
+      });
+
+      test('Validating error, completed and custom icon setup', function () {
+        var el = fixture('iconstep');
+        assert.isTrue(el.value == 1, 'second step is selected');
+        setTimeout(function() {
+          flush(function() {
+            var steps = el.querySelectorAll(".stepsection");
+            var iconFirstStep = steps[0].querySelector("iron-icon");
+            assert.equal(iconFirstStep.icon, "icons:check");
+            var iconSecondStep = steps[1].querySelector("iron-icon");
+            assert.equal(iconSecondStep.icon, "icons:report-problem");
+            var iconThirdStep = steps[2].querySelector("iron-icon");
+            assert.equal(iconThirdStep.icon, "icons:alarm");
+          });
+        }, 100);
+      });
+
+      test('Check vertical stepper with label inline', function () {
+        var ele = fixture('verticalstep');
+        var el = ele.querySelector('oe-stepper');
+        assert.isTrue(el.value == 1, 'second step is selected');
+        flush(function() {
+          setTimeout(function() {
+            var steps = el.querySelectorAll(".stepsection");
+            var iconFirstStep = steps[0].querySelector("iron-icon");
+            assert.equal(iconFirstStep.icon, "icons:check");
+            var iconSecondStep = steps[1].querySelector("iron-icon");
+            assert.equal(iconSecondStep.icon, "icons:report-problem");
+            var iconThirdStep = steps[2].querySelector("iron-icon");
+            assert.equal(iconThirdStep.icon, "icons:alarm");
+            var line = el.querySelector("#line");
+            assert.equal(line.style.left, "calc(50% - var(--oe-stepper-circle-size,40px)/2)");
+            var filling = el.querySelector("#filling");
+            assert.equal(filling.style.left, "calc(50% - var(--oe-stepper-circle-size,40px)/2)");
+          }, 200);
+        });
+      });
+
+      test('Check vertical stepper with label bottom', function () {
+        var ele = fixture('verticalstep');
+        var el = ele.querySelector('oe-stepper');
+        el.set("labelPosition", "bottom");
+        assert.isTrue(el.value == 1, 'second step is selected');
+        flush(function() {
+          setTimeout(function() {
+            var steps = el.querySelectorAll(".stepsection");
+            var iconFirstStep = steps[0].querySelector("iron-icon");
+            assert.equal(iconFirstStep.icon, "icons:check");
+            var iconSecondStep = steps[1].querySelector("iron-icon");
+            assert.equal(iconSecondStep.icon, "icons:report-problem");
+            var iconThirdStep = steps[2].querySelector("iron-icon");
+            assert.equal(iconThirdStep.icon, "icons:alarm");
+            var line = el.querySelector("#line");
+            assert.equal(line.style.left, "");
+            var filling = el.querySelector("#filling");
+            assert.equal(filling.style.left, "");
+          }, 200);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

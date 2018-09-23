@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="./scripts/index.js"></script>
+<script src="./scripts/qrcode.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div ng-app="approvApp" ng-controller="approvCtrl">
+	<div class="container-fluid">
+		<div class="text-center page-header">
+			<h1>Approval App</h1>
+			<p>Approval made Easy !!!</p>
+		</div>
+		<div ng-hide="loggedInUser">
+			<div class="col-md-6 col-md-offset-3">
+				<div align="center">
+					<h2>Login</h2>
+				</div>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary" ng-click="loginUser()">Login</button>
+				</div>
+			</div>
+		</div>
+		<div ng-hide={{"!loggedInUser"}}>
+			<div class="col-lg-2 container-fluid panel panel-default">
+				<div class="panel-body">
+					<a href="#!/list-devices">List Devices</a>
+				</div>
+				<div class="panel-body">
+					<a href="#!/list-tran">List Trans</a>
+				</div>
+			</div>
+			<div class="col-lg-10">
+			<div ng-view></div>		
+			</div>
+		</div>
+    </div>
+</div>
+</body>
+</html>

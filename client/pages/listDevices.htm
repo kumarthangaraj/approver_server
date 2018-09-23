@@ -1,0 +1,31 @@
+<table class="table">
+<thead>
+<tr>
+<th>User Id</th>
+<th>Device Id</th>
+<th>Brand</th>
+<th>Model</th>
+<th>Device Type</th>
+<th>OS Platform</th>
+<th>OS Version</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="device in devices">
+	<td><div style='text-transform:uppercase'>{{device.clientId}}</div></td>
+	<td>{{device.deviceId}}</td>
+	<td><div style='text-transform:uppercase'>{{device.config.Brand}}</div></td>
+	<td>{{device.config.Model}}</td>
+	<td>{{device.config.Device}}</td>
+	<td></td>
+	<td>{{device.config.SDK_INT}}</td>
+	<td>
+	<div ng-hide="device.enabled != 'Y'">
+		<button type="button" class="btn btn-danger" ng-click="enableDisableDevices(device.deviceId,'N')">Disable</button>
+	</div>
+	<div ng-hide="device.enabled == 'Y'">
+		<button type="button" class="btn btn-info" ng-click="enableDisableDevices(device.deviceId,'Y')">Enable</button>
+	</div>
+	</td>
+</table>

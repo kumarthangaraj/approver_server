@@ -1,0 +1,26 @@
+<table class="table">
+<thead>
+<tr>
+<th>Tran Id</th>
+<th>Tran Date</th>
+<th>From:</th>
+<th>To:</th>
+<th>Currnecy</th>
+<th>Amount</th>
+<th>Remarks</th>
+<th>Approval Status</th>
+<th>Approval Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="tran in trans">
+	<td>{{tran.tran_id}}</td>
+	<td>{{tran.tran_date}}</td>
+	<td>{{tran.from_acct}}</td>
+	<td>{{tran.to_acct}}</td>
+	<td><div style='text-transform:uppercase'>{{tran.currency}}</div></td>
+	<td>{{tran.amount}}</td>
+	<td>{{tran.tran_particulars}}</td>
+	<td>{{tran.approval_status}}</td>
+	<td>{{tran.approver_comments}}</td>
+</table>

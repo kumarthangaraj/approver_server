@@ -1,0 +1,33 @@
+{
+  "name": "Barcodedata",
+  "base": "BaseEntity",
+  "strict": false,
+  "plural": "Barcodedata",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string",
+      "source": "code",
+      "required": true
+    },
+    "barcode": {
+      "type": "object",
+      "source": "barcode",
+      "required": true
+    },
+    "desc": {
+      "type": "desc",
+      "source": "desc",
+	  "required": true
+    },
+    "username": {
+      "type": "string",
+      "source": "username"
+    }
+  },
+  "relations": {},
+  "acls": []
+}

@@ -1,0 +1,33 @@
+{
+    "initial:before": {
+        "loopback#favicon": {
+            "params": "./client/favicon.ico"
+        }
+    },
+    "initial": {
+        "compression": {},
+        "cors": {
+            "params": {
+                "origin": true,
+                "credentials": true,
+                "maxAge": 86400
+            }
+        }
+    },
+    "session": {},
+    "auth": {},
+    "parse": {},
+    "routes:before": {
+        "./middleware/apiPreHandler": {
+            "paths": "/api"
+        }
+    },
+    "routes:after": {},
+    "files": {
+        "loopback#static": {
+            "params": "$!../client"
+        }
+    },
+    "final": {},
+    "final:after": {}
+}

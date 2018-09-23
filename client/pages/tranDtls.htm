@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<div class="col-lg-6 form-group">
+	<label for="userId">Tran Id:</label>
+	<input type="text" class="form-control" ng-model="tranObj.tran_id">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="usr">From A/c Id</label>
+	<input type="text" class="form-control" ng-model="tranObj.from_acct">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="bankId">To A/c Id</label>
+	<input type="text" class="form-control" ng-model="tranObj.to_acct">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="usr">Currency</label>
+	<input type="text" class="form-control" ng-model="tranObj.currency">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="usr">Amount</label>
+	<input type="text" class="form-control" ng-model="tranObj.amount">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="usr">Tran Particulars</label>
+	<input type="text" class="form-control" ng-model="tranObj.tran_particulars">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="usr">Approver 1</label>
+	<input type="text" class="form-control" ng-model="tranObj.approver1">
+</div>
+<div class="col-lg-6 form-group">
+	<label for="usr">Approver 2</label>
+	<input type="text" class="form-control" ng-model="tranObj.approver2">
+</div>
+<div class="col-lg-12">
+	<button type="button" class="btn btn-lg" id="addTran" ng-click="addTran()">Add Tran</button>
+</div>

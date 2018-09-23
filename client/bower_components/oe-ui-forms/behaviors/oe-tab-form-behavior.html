@@ -1,0 +1,70 @@
+<!--
+  ©2018-2019 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
+  Bangalore, India. All Rights Reserved.
+-->
+<link rel="import" href="../../polymer/polymer.html">
+<!--
+`OEUtils.TabFormBehavior` behavior is intended for tab navigation and control.
+
+This behavior comes with functions to traverse the steps in a multi-paged form.
+'selectedStep' will give the current selected step , and the total steps are computed based on the 
+'container.steps' property in UIComponent model and the data is set in 'stepperSteps'.
+-->
+<script>
+  var OEUtils = OEUtils || {};
+  OEUtils.TabFormImpl = {
+    properties: {
+      selectedStep: {
+        type: Number,
+        value: 0
+      }
+    },
+    observers: [
+      '_computeSteps(meta.container.steps)'
+    ],
+    listeners:{
+      'oe-formdata-inserted':'_gotoFirstPage',
+      'oe-formdata-deleted':'_gotoFirstPage',
+      'oe-formdata-updated':'_gotoFirstPage'
+    },
+    _gotoFirstPage:function(){
+      this.set('selectedStep', 0);
+    },
+    _goPrev: function () {
+      if (this.selectedStep > 0) {
+        this.set('selectedStep', this.selectedStep - 1);
+      }
+    },
+    _goNext: function () {
+      if (this.stepperSteps.length > (this.selectedStep + 1)) {
+        this.set('selectedStep', this.selectedStep + 1);
+      }
+    },
+    _computeBtnText: function (steps, curStep) {
+      return curStep === (steps.length - 1) ? "Save" : "Next";
+    },
+    _computeBtnIcon: function (steps, curStep) {
+      return curStep === (steps.length - 1) ? "save" : "chevron-right";
+    },
+    _computeSteps: function (steps, isVerticalLayout) {
+      var stepperSteps = steps.map(function (step) {
+        return {
+          "label": step.label,
+          "isDisabled": false,
+          "hasError": false,
+          "isCompleted": false
+        }
+      });
+      this.set('stepperSteps', stepperSteps);
+      this._gotoFirstPage();
+    }
+  }
+  OEUtils.TabFormBehavior = [
+    OEUtils.TabFormImpl,
+    OEUtils.AjaxBehavior,
+    OEUtils.FormValidationBehavior,
+    OEUtils.FormMessagesBehavior,
+    OEUtils.ModelHandler
+  ]
+
+</script>

@@ -1,0 +1,158 @@
+<!--
+  ©2016-2017 EdgeVerve Systems Limited (a fully owned Infosys subsidiary),
+  Bangalore, India. All Rights Reserved.
+-->
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>oe-stepper demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../paper-styles/paper-styles.html">
+
+  <link rel="import" href="../oe-stepper.html">
+</head>
+
+<body>
+  <div>
+    <h3>Stepper with second step selected</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper value="1" steps='[{"label":"Test1","icon":"icons:supervisor-account","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test2","icon":"icons:alarm","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test3","icon":"icons:android","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test4","icon":"icons:build","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test5","icon":"icons:card-travel","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test6","icon":"icons:cloud-queue","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test7","icon":"icons:event-seat","isDisabled":false,"hasError":false,"isCompleted":false}]'>
+        </oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with label at bottom</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper label-position='bottom' steps='[{"label":"Test Step 1","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 2","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 3","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 4","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 5","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 6","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 7","isDisabled":false,"hasError":false,"isCompleted":false}]'>
+        </oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with fixed placements</h3>
+    <p>By setting the attribute 'spread-value' with a number , the steps will be seperated by the set fixed pixels distance.</p>
+    <demo-snippet>
+      <template>
+        <oe-stepper spread-value="30" label-position='bottom' steps='[{"label":"Test Step 1","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 2","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 3","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 4","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 5","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 6","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"Test Step 7","isDisabled":false,"hasError":false,"isCompleted":false}]'>
+        </oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with first step selected : default selection</h3>
+    <demo-snippet>
+      <style is="custom-style">
+        oe-stepper.custom{
+            --accent-color: #FFAE03;
+            --disable-accent-color: #c89426;
+            --light-primary-color: #F5F5F5;
+            --dark-disable-color:purple;
+            --stepnumber-color: black;
+            --alert-color: red;
+            --step-completed-color : green;
+            --step-primary-opacity: 0.64;
+            --stepsection-primary-opacity: 0.87;
+            --connectorLine-primary-opacity: 0.24;
+            --disable-primary-opacity: 0.4;
+            --stepsection-primary-color: #000000;
+
+        }
+      </style>
+      <template>
+        <oe-stepper class="custom" steps='[{"label":"Financial Details","isDisabled":false,"hasError":true,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":true,"hasError":false,"isCompleted":false},
+        {"label":"Asset Details","isDisabled":true,"hasError":false,"isCompleted":false},
+        {"label":"Location Details","isDisabled":false,"hasError":false,"isCompleted":false},
+        {"label":"CIF Details","isDisabled":false,"hasError":false,"isCompleted":true}]' value='0'></oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with second step selected</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper steps='[{"label":"Test1","isDisabled":false,"hasError":true,"isCompleted":false},
+        {"label":"Test2","isDisabled":true,"hasError":false,"isCompleted":false},
+        {"label":"Test3","isDisabled":true,"hasError":false,"isCompleted":false}]'  value='1'></oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with third step selected</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":true,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":true,"hasError":false,"isCompleted":false},
+        {"label":"Asset Details","isDisabled":true,"hasError":false,"isCompleted":false}]' value='2'></oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with only two steps</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":true,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":true,"hasError":false,"isCompleted":false}]' value='0'></oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Stepper with only one step</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":true,"isCompleted":false}]'></oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Disabled oe-stepper</h3>
+    <demo-snippet>
+      <template>
+        <oe-stepper steps='[{"label":"Financial Details","isDisabled":false,"hasError":true,"isCompleted":false},
+        {"label":"Demographic Details","isDisabled":true,"hasError":false,"isCompleted":false},
+        {"label":"Asset Details","isDisabled":true,"hasError":false,"isCompleted":false}]' value='1'></oe-stepper>
+      </template>
+    </demo-snippet>
+
+    <h3>Vertical stepper with second step selected</h3>
+    <h4>Note that parent of vertical oe-stepper  should have sufficient height or the parent should have style "overflow: auto;" to allow scroll.</h4>
+    <demo-snippet>
+      <template>
+        <div style="height: 500px;" class="layout vertical center">
+          <oe-stepper id="vertical" vertical class="flex" value="1" steps='[{"label":"Test1","icon":"icons:supervisor-account","isDisabled":false,"hasError":false,"isCompleted":false},
+          {"label":"Test2","icon":"icons:alarm","isDisabled":false,"hasError":false,"isCompleted":false},
+          {"label":"Test3","icon":"icons:android","isDisabled":false,"hasError":false,"isCompleted":false},
+          {"label":"Test4","icon":"icons:build","isDisabled":false,"hasError":false,"isCompleted":false},
+          {"label":"Test5","icon":"icons:card-travel","isDisabled":false,"hasError":false,"isCompleted":false},
+          {"label":"Test6","icon":"icons:cloud-queue","isDisabled":false,"hasError":false,"isCompleted":false},
+          {"label":"Test7","icon":"icons:event-seat","isDisabled":false,"hasError":false,"isCompleted":false}]'>
+          </oe-stepper>
+        </div>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
+</html>

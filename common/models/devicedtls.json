@@ -1,0 +1,46 @@
+{
+  "name": "devicedtls",
+  "base": "PersistedModel",
+  "plural": "devicedtls",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "deviceId": {
+      "type": "string",
+	  "id": true,
+      "required": true
+    },
+    "config": {
+      "type": "object",
+      "required": true
+    },
+    "clientId": {
+      "type": "string"
+    },
+    "fcmtoken": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"create"
+    },
+	{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"updateAttributes"
+    }],
+  "methods": {}
+}
