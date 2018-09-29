@@ -152,4 +152,29 @@ app.controller('deviceCtrl', ['$scope','$http','$q','$modal',function($scope, $h
 			deferred.resolve(errData);
 		});
 	}
+	$scope.deregisterDevices = function(deviceId){
+		var dataObj = {};
+		dataObj.deviceId = deviceId;
+		var deferred = $q.defer();
+		var devices = $scope.devices;
+		var requestUrl = "http://localhost:3000/api/devicedtls/"+deviceId;
+		$http({
+			method: "DELETE",
+			data:dataObj,
+			url:requestUrl,
+			headers: {'Content-Type': 'application/json'}
+		}).then(function (res) {
+			console.log(res);
+			console.log(devices);
+			for(device in devices){
+				if(devices[device].deviceId === deviceId){
+					$scope.devices = devices.splice(device,1);
+				}
+			}
+			deferred.resolve(res.data);
+		}, function(errData){
+			console.log(errData);
+			deferred.resolve(errData);
+		});
+	}
 }]);

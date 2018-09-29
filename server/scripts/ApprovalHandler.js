@@ -59,7 +59,7 @@ function updatePendingApprovalRequests(req,res,next){
                     msg = "Record approved successfully"
                 else if(approvalAction === "R")
                     msg = "Record rejected successfully"
-                return successResponse(res,msg);
+                return successResponse(res,msg,approvalAction);
                 });
             }
         });
