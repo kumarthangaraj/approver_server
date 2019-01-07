@@ -1,0 +1,57 @@
+{
+  "name": "DeviceConfig",
+  "base": "PersistedModel",
+  "plural": "DeviceConfig",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+	"device_os": {
+      "type": "string",
+	  "id": true,
+      "required": true
+    },
+    "app_version": {
+      "type": "string",
+      "required": true
+    },
+    "app_checksum": {
+      "type": "string",
+      "required": true
+    },
+    "min_sdk_version": {
+      "type": "string",
+      "required":true
+    },
+    "restricted_makes": {
+      "type": "string",
+      "required":false
+    },
+    "restricted_app_versions": {
+      "type": "string",
+      "required":false
+    },
+	"restricted_sdk_versions": {
+      "type": "string",
+      "required":false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"create"
+    },
+	{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"updateAttributes"
+    }],
+  "methods": {}
+}

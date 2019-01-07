@@ -1,0 +1,49 @@
+{
+  "name": "ClientConfig",
+  "base": "PersistedModel",
+  "plural": "ClientConfigs",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "app_name": {
+      "type": "string",
+	  "id": true,
+      "required": true
+    },
+    "app_desc": {
+      "type": "string",
+      "required": true
+    },
+    "client_ip": {
+      "type": "string",
+      "required":true
+    },
+    "client_id": {
+      "type": "string",
+      "required":true
+    },
+    "client_secret": {
+      "type": "string",
+      "required":true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"create"
+    },
+	{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"updateAttributes"
+    }],
+  "methods": {}
+}

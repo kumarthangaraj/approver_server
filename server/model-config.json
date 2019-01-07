@@ -18,7 +18,19 @@
         "dataSource":"db",
         "public": true
     },
+    "ClientConfig": {
+        "dataSource":"db",
+        "public":true
+    },
+	"DeviceConfig": {
+        "dataSource":"db",
+        "public":true
+    },
     "TranDtls": {
+        "dataSource":"db",
+        "public": true
+    },
+	"DeviceInfo": {
         "dataSource":"db",
         "public": true
     }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<div ng-hide="addNewClient">
+<table class="table">
+	<thead>
+	<tr>
+	<th>Client Name</th>
+	<th>Client Desc</th>
+	<th>Client IP</th>
+	<th>Client ID</th>
+	<th>Action</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="client in clients">
+		<td>{{client.app_name}}</td>
+		<td>{{client.app_desc}}</td>
+		<td>{{client.client_ip}}</td>
+		<td>{{client.client_id}}</td>
+		<td>
+		<div>
+			<button type="button" class="btn btn-danger" ng-click="deleteClient(client.app_name)">Delete</button>
+		</div>
+		</td>
+	</table>
+		<!--<div style="align-items: flex-end">
+			<img src="./images/add_client.png" style="tint-color:blue;float:right;height:48px;width:72px;padding-right:24px"></img>
+		</div> -->
+	<div ng-click="addClient(this)">
+		<i class="material-icons" style="color:blue; float:right;font-size:48px;padding-right:24px" >library_add</i>
+	</div>
+</div>
+<div ng-hide="!addNewClient">
+	<div class="col-lg-6 form-group">
+		<label for="userId">Client App Name</label>
+		<input type="text" class="form-control" ng-model="configObj.app_name">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="usr">Client App Description</label>
+		<input type="text" class="form-control" ng-model="configObj.app_desc">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="bankId">Client Domain IP</label>
+		<input type="text" class="form-control" ng-model="configObj.client_ip">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="usr">Client Id</label>
+		<input type="text" class="form-control" ng-model="configObj.client_id">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="usr">Client Secrect</label>
+		<input type="text" class="form-control" ng-model="configObj.client_secret">
+	</div>
+	<div class="col-lg-12">
+		<button type="button" class="btn btn-primary btn-lg" id="addTran" ng-click="addConfig()">Add Config</button>
+	</div>
+</div>

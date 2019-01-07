@@ -41,7 +41,7 @@ module.exports = function(devicedtls) {
         error.code = 'APP_INVALIDUSER'; 
         return error;
     };
-    devicedtls.beforeRemote('delete',function(context,modelInstance,next){
+    devicedtls.afterRemote('delete',function(context,modelInstance,next){
         deleteLinkedUser(context.req,next);
     });
 };

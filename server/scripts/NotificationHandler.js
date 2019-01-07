@@ -47,13 +47,28 @@ function successResponse(res,message, data){
     res.end(JSON.stringify(responseObject));
     return;
 }
+ 
+var sendNotificationList = function(context,trandata){
+    var count = 0;
+    sendNotificationRecursive(context,trandata,count,sendNotificationRecursive);
+}
 
-var sendNotification = function(context,trandata){
-    devices.find({"where":{"clientId":trandata.approver1}},context,function(err,data){
+var sendNotificationRecursive = function(context,trandata,count, cb){
+    if(count == trandata.length)
+        return;
+    sendNotification(context,trandata[count++].__data,function(){
+        cb(context,trandata,count,cb);
+    });
+}
+
+var sendNotification = function(context,trandata,cb){
+    devices.find({"where":{"clientId":trandata.approver}},context,function(err,data){
         if(err)
             console.log("No device registered");
-        if(data.length == 0)
-            return; 
+        if(data.length == 0) {
+            if(cb !== null)    
+                cb(); 
+        }
         else {
             var input = formNotificationInput(trandata,data[0].__data);
             /*var input = { 
@@ -72,6 +87,8 @@ var sendNotification = function(context,trandata){
                 if(err){
                     console.log("Error in send Notification "+err);
                 }
+                if(cb !== null)
+                    cb();
             });
         }
     })
@@ -82,7 +99,7 @@ function formNotificationInput(trandata,data){
         "data":{
             "ttl": 52000,
             "title": "Approval Request",
-            "content": trandata.tran_particulars,
+            "content": trandata.excp_desc,
             "requestId":trandata.id.toString(),
         },
         "to":data.fcmtoken
@@ -92,5 +109,6 @@ function formNotificationInput(trandata,data){
 
 module.exports = {
     sendNotification : sendNotification,
-    updateFCMToken : updateFCMToken
+    updateFCMToken : updateFCMToken,
+    sendNotificationList : sendNotificationList
 }

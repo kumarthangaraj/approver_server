@@ -16,7 +16,10 @@
     "passport-oauth2": "1.1.2",
     "passport-saml": "0.15.0",
     "passport-twitter": "1.0.3",
+	"node-rsa":"^1.0.2",
     "qrcode": "1.2.0",
-    "sysmo": "^0.1.0"
+    "sysmo": "^0.1.0",
+    "base-64": "^0.1.0",
+    "utf8": "^3.0.0"
   }
 }

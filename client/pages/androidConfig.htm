@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<div ng-hide="androidConfigList">
+<table class="table">
+	<thead>
+	<tr>
+	<th>App Version</th>
+	<th>App Checksum</th>
+	<th>Min SDK Version</th>
+	<th>Restricted Make</th>
+	<th>Restricted App versions</th>
+	<th>Restricted SDK versions</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="config in deviceConfigs">
+		<td>{{config.app_version}}</td>
+		<td>{{config.app_checksum}}</td>
+		<td>{{config.min_sdk_version}}</td>
+		<td>{{config.restricted_makes}}</td>
+		<td>{{config.restricted_app_versions}}</td>
+		<td>{{config.restricted_sdk_versions}}</td>
+		<!-- <td>
+		<div>
+			<button type="button" class="btn btn-danger" ng-click="updateDeviceConfig('android')">Edit</button>
+		</div>
+		</td> -->
+	</table>
+		<!--<div style="align-items: flex-end">
+			<img src="./images/add_client.png" style="tint-color:blue;float:right;height:48px;width:72px;padding-right:24px"></img>
+		</div> -->
+	<div ng-click="showAndroidConfig(this)">
+		<i class="material-icons" style="color:blue; float:right;font-size:48px;padding-right:24px" >library_add</i>
+	</div>
+</div>
+<div ng-hide="!editAndroidConfig">
+	<div class="col-lg-6 form-group">
+		<label for="app_version">App Version</label>
+		<input type="text" class="form-control" ng-model="androidObj.app_version">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="app_checksum">Check Sum</label>
+		<input type="password" class="form-control" ng-model="androidObj.app_checksum">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="min_sdk_version">Minimum SDK Version Supported</label>
+		<input type="text" class="form-control" ng-model="androidObj.min_sdk_version">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="restricted_makes">Makers to be restricted</label>
+		<input type="text" class="form-control" ng-model="androidObj.restricted_makes">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="restricted_app_versions">Restricted App Versions</label>
+		<input type="text" class="form-control" ng-model="androidObj.restricted_app_versions">
+	</div>
+	<div class="col-lg-6 form-group">
+		<label for="restricted_sdk_versions">Restricted SDK Versions</label>
+		<input type="text" class="form-control" ng-model="androidObj.restricted_sdk_versions">
+	</div>
+	<div class="col-lg-12">
+		<button type="button" class="btn btn-primary btn-lg" id="androidConfig" ng-click="updateAndroidConfig()">Update Config</button>
+	</div>
+</div>

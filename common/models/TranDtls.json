@@ -1,56 +1,115 @@
 {
     "name": "TranDtls",
-    "base": "PersistedModel",
+    "base": "BaseEntity",
     "idInjection": true,
     "options": {
       "validateUpsert": true
     },
     "properties": {
-      "tran_id": {
+      "request_id": {
         "type": "string",
         "required": true
       },
-      "tran_date": {
-        "type": "date",
-        "required": true
+      "request_date": {
+        "type": "string",
+        "required": false
       },
-      "from_acct": {
+	  "org_rec_no": {
+        "type": "string",
+        "required": false
+      },
+	  "sol_id": {
         "type": "string",
         "required": true
       },
-      "to_acct": {
+	  "bank_id": {
+        "type": "string",
+        "required": true
+      },
+      "acct_id": {
+        "type": "string",
+        "required": false
+      },
+	  "acct_name": {
+        "type": "string",
+        "required": false
+      },
+	  "cr_dr_indicator": {
+        "type": "string",
+        "required": true
+      },
+      "matrix_id": {
         "type": "string",
         "required": true
       },
       "currency": {
         "type": "string",
-        "required": true
+        "required": false
       },
       "amount": {
-        "type": "number",
-        "required": true
+        "type": "string",
+        "required": false
       },
       "tran_particulars": {
         "type": "string",
-        "required": true
+        "required": false
       },
-      "approver1": {
-        "type": "string",
-        "required": true
-      },
-      "approver2": {
+	  "excp_code": {
         "type": "string",
         "required": false
+      },
+    "excp_data": {
+      "type": "string",
+      "required": true
+    },
+	  "excp_desc": {
+        "type": "string",
+        "required": false
+      },
+	  "created_by": {
+        "type": "string",
+        "required": true
+      },
+      "approver": {
+        "type": "string",
+        "required": true
       },
       "approval_status" : {
         "type": "string",
         "required": false,
         "default": "N"
+      },
+	  "approver_comments" : {
+        "type": "string",
+        "required": false,
+        "default": "N"
+      },
+      "acct_sol" : {
+        "type": "string",
+        "required": false
+      },
+      "tran_remarks1" : {
+        "type": "string",
+        "required": false
+      },
+      "free_text1" : {
+        "type": "string",
+        "required": false
+      },
+      "free_text2" : {
+        "type": "string",
+        "required": false
       }
     },
     "validations": [],
     "relations": {},
-    "acls": [],
+    "acls": [{
+        "accessType": "EXECUTE",
+          "principalType": "ROLE",
+          "principalId": "$everyone",
+          "permission": "ALLOW",
+        "property":"create"
+        }],
     "methods": {}
   }
   

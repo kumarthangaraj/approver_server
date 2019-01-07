@@ -8,8 +8,7 @@
 <th>Device Type</th>
 <th>OS Platform</th>
 <th>OS Version</th>
-<th>Action</th>
-<th>De-Register</th>
+<th style="align:center">Action</th>
 </tr>
 </thead>
 <tbody>
@@ -22,16 +21,15 @@
 	<td></td>
 	<td>{{device.config.SDK_INT}}</td>
 	<td>
-	<div ng-hide="device.enabled != 'Y'">
-		<button type="button" class="btn btn-danger" ng-click="enableDisableDevices(device.deviceId,'N')">Disable</button>
-	</div>
-	<div ng-hide="device.enabled == 'Y'">
-		<button type="button" class="btn btn-info" ng-click="enableDisableDevices(device.deviceId,'Y')">Enable</button>
-	</div>
-	</td>
-	<td>
-	<div>
-		<button type="button" class="btn btn-danger" ng-click="deregisterDevices(device.deviceId)">De-Register</button>
+	<div class="btn-group">
+		<div ng-hide="device.enabled != 'Y'">
+			<button type="button" class="btn btn-danger" ng-click="enableDisableDevices(device.deviceId,'N')">Disable</button>
+			<button type="button" class="btn btn-danger" ng-click="deregisterDevices(device.deviceId)">De-Register</button>
+		</div>
+		<div ng-hide="device.enabled == 'Y'">
+			<button type="button" class="btn btn-success" ng-click="enableDisableDevices(device.deviceId,'Y')">Enable</button>
+			<button type="button" class="btn btn-danger" ng-click="deregisterDevices(device.deviceId)">De-Register</button>
+		</div>
 	</div>
 	</td>
 </table>

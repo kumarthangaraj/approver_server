@@ -2,6 +2,9 @@
     "initial:before": {
         "loopback#favicon": {
             "params": "./client/favicon.ico"
+        },
+        "./middleware/apiPreHandler": {
+            "paths": "/approvalApp"
         }
     },
     "initial": {

@@ -7,10 +7,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
 <script src="./scripts/index.js"></script>
 <script src="./scripts/qrcode.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+  .bg-1 {
+       background-color: #0099cc; /* Dark Blue */
+        color: #ffffff;
+    }
+	.bg-2 {
+       background-color: #83afaf; /* Dark Green */
+        color: #ffffff;
+    }
+  </style>
 </head>
 <body>
 
@@ -34,7 +45,7 @@
 					<input type="password" name="password" id="password" class="form-control" ng-model="password" required />
 				</div>
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary" ng-click="loginUser()">Login</button>
+					<button type="submit" class="btn btn-primary btn-block" ng-click="loginUser()">Login</button>
 				</div>
 			</div>
 		</div>
@@ -46,9 +57,18 @@
 				<div class="panel-body">
 					<a href="#!/list-tran">List Trans</a>
 				</div>
+				<div class="panel-body">
+					<a href="#!/client-config">Clients Config</a>
+				</div>
+				<div class="panel-body">
+						<a href="#!/device-config">Device Config</a>
+					</div>
+				<div class="panel-body">
+					<button type="submit" class="btn btn-primary btn-block" ng-click="testFI()">Test FI</button>
+				</div>
 			</div>
 			<div class="col-lg-10">
-			<div ng-view></div>		
+			<div ng-view></div>
 			</div>
 		</div>
     </div>

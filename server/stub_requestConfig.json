@@ -1,0 +1,34 @@
+{
+    "httpMode" : "http",
+    "serverDomain" : "localhost:3001",
+    "interface" : "stub_requestHandler",
+    "users" : {
+        "register" : {
+            "url" : "validateQRCode",
+            "iptype" : "JSON",
+            "method" : "POST",
+            "request" : {"qrcode":""},
+            "response" : {"userDtls": {"user_id":""}},
+            "prepareRequest" : "popInputForValidateQRCode",
+            "parseResponse" : "popOutputForValidateQRCode"
+        },
+        "validateRegister" : {
+            "url" : "validateRegister",
+            "iptype" : "JSON",
+            "method" : "POST",
+            "request" : {"reqObj":""},
+            "response" : {"userDtls": {"user_id":""}},
+            "prepareRequest" : "popInputForValidateRegister",
+            "parseResponse" : "popOutputOfValidateRegister"
+        }
+    },
+	"requests" : {
+		"update" : {
+			"url" : "api/TranDtls/update",
+            "iptype" : "JSON",
+            "request" : {"data":""},
+            "response" : {"status": ""}
+		}
+	}
+	
+}

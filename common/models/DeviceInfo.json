@@ -1,0 +1,58 @@
+{
+  "name": "DeviceInfo",
+  "base": "PersistedModel",
+  "plural": "DeviceInfos",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "unique_id": {
+      "type": "string",
+	  "id": true,
+      "required": true
+    },
+    "device_id": {
+      "type": "string",
+      "required": true
+    },
+    "make": {
+      "type": "string"
+    },
+    "os_version": {
+      "type": "string"
+    },
+	"identifier": {
+      "type": "string"
+    },
+	"request_time": {
+      "type": "date"
+    },
+    "app_version": {
+      "type": "string"
+    },
+	"os": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"create"
+    },
+	{
+	  "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+	  "property":"updateAttributes"
+    }],
+  "methods": {}
+}
